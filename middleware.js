@@ -10,13 +10,17 @@ module.exports.authenticateToken =(requiredRole) => async (req, res, next) => {
   if (!token) {
     return res.status(401).json({ error: 'Unauthorized: Missing token' });
   }
-
+  //to check whether the token pass in is what you want
+//  console.log("Token",token);
   try {
     // Verify the token
     const decoded = jwt.verify(token, 'vms2');
 
+    // Log decoded information for troubleshooting
+    console.log('Decoded Token:', decoded);
+
     // Check if the token has the required role
-    if (decoded.role !== requiredRole) {
+    if (decoded.category !== requiredRole) {
       return res.status(403).json({ error: 'Forbidden: Insufficient permissions' });
     }
 
