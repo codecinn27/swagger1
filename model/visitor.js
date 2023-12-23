@@ -1,12 +1,16 @@
 const mongoose = require('mongoose')
 const visitorSchema = new mongoose.Schema({
-    email:{
+    username:{
         type: String,
         required: true
     },
-    phoneNumber:{
+    purposeOfVisit:{
         type: Number,
         required: true
+    },
+    phoneNumber:{
+        type:Number,
+        required:true
     }
     
 })
