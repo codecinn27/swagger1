@@ -1,0 +1,12 @@
+###
+POST http://localhost:3000/admin/registerHost
+Content-Type: application/json
+
+{
+    "username":"yc",
+    "password":"12345",
+    "email":"gg@gmail.com",
+    "phoneNumber":"123456789"
+}
+
+###

@@ -1,8 +1,10 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://codecinnpro:9qLtJIAG9k8G1Pe8@cluster0.egrjwh1.mongodb.net/?retryWrites=true&w=majority')
+const adminRouter = require('./route/admin');
+
+mongoose.connect('mongodb+srv://codecinnpro:9qLtJIAG9k8G1Pe8@cluster0.egrjwh1.mongodb.net/vms_2?retryWrites=true&w=majority')
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -11,19 +13,17 @@ db.once("open",()=>{
 })
 
 app.use(express.json());
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.get('/haha', (req, res) => {
-  res.send('Hahaha!')
-})
+app.use('/admin',adminRouter);
 
-
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+});
 
 
 //admin create new host account
