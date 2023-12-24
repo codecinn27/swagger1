@@ -6,10 +6,6 @@ const visitSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    phoneNumber: {
-        type: Number,
-        required: true
-    },
     visitTime: {
         type: Date,
         default: Date.now
@@ -21,6 +17,10 @@ const visitSchema = new mongoose.Schema({
 const visitorSchema = new mongoose.Schema({
     name: {
         type: String,
+        required: true
+    },    
+    phoneNumber: {
+        type: Number,
         required: true
     },
     visits: [visitSchema]  // Embed an array of visits within each visitor

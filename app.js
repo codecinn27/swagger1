@@ -1,5 +1,3 @@
-
-
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000;
@@ -7,11 +5,12 @@ const mongoose = require('mongoose');
 const adminRouter = require('./route/admin');
 const loginRouter = require('./route/login');
 const hostRouter = require('./route/host');
-const swaggerjsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJSDoc = require('swagger-jsdoc');
-//CORS headers to allow requests from the Swagger UI
-const cors = require('cors');
+
+//must be on top, before all route
+app.use(express.json());
+
 mongoose.connect('mongodb+srv://codecinnpro:9qLtJIAG9k8G1Pe8@cluster0.egrjwh1.mongodb.net/vms_2?retryWrites=true&w=majority')
 
 const db = mongoose.connection;
@@ -20,10 +19,7 @@ db.once("open",()=>{
     console.log("Database connected");
 })
 
-// Enable CORS for all routes
-app.use(cors());
-//must be on top, before all route
-app.use(express.json());
+
 
 // app.get('/', (req, res) => {
 //   res.send('Hello World!')
@@ -65,7 +61,8 @@ const options = {
         },
         servers: [
             {
-                url:"http://localhost:3000/",
+                // url:"http://localhost:3000/",
+                url:"https://swaggerg6.azurewebsites.net/"
             },
         ],
     },
