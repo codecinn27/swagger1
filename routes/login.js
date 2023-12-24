@@ -91,11 +91,10 @@
 const express = require('express');
 const router = express.Router();
 const loginController = require('../controllers/login');
-const admin = require('../controllers/admin');
 
 /**
  * @swagger
- * /:
+ * /login:
  *  post:
  *    tags: 
  *        - Login
@@ -161,7 +160,7 @@ const admin = require('../controllers/admin');
 
 /**
  * @swagger
- * /testing:
+ * /:
  *  get:
  *      summary: This api is for testing
  *      tags:
@@ -171,9 +170,11 @@ const admin = require('../controllers/admin');
  *          200:
  *              description: to test get api
  */
-// POST route for user login
-router.post('/', loginController.login);
-router.get('/testing',(req,res)=>{
+
+router.get('/',(req,res)=>{
     res.send("Hello world!!! ")
 });
+// POST route for user login
+router.post('/login', loginController.login);
+
 module.exports = router;

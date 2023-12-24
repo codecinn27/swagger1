@@ -24,8 +24,8 @@ db.once("open",()=>{
 // })
 
 app.use('/', loginRouter); // Use the login route at the root
-// app.use('/admin',adminRouter);
-// app.use('/host', hostRouter);
+app.use('/admin',adminRouter);
+app.use('/host', hostRouter);
 
 const options = {
     definition:{
@@ -59,14 +59,14 @@ const options = {
         },
         servers: [
             {
-                //url:"http://localhost:3000/",
-                url:"https://swaggerg6.azurewebsites.net/"
-            },
+                url:"http://localhost:3000/"
+                // url:"https://swaggerg6.azurewebsites.net/"
+            }
         ],
     },
     //all the route.js file store inside the route file 
     apis:["./routes/*.js"],
-}
+};
 
 const spacs = swaggerJSDoc(options);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(spacs));
