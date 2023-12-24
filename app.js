@@ -2,9 +2,9 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
-const adminRouter = require('./route/admin');
-const loginRouter = require('./route/login');
-const hostRouter = require('./route/host');
+const adminRouter = require('./routes/admin');
+const loginRouter = require('./routes/login');
+const hostRouter = require('./routes/host');
 const swaggerUi = require("swagger-ui-express");
 const swaggerJSDoc = require('swagger-jsdoc');
 
@@ -18,8 +18,6 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open",()=>{
     console.log("Database connected");
 })
-
-
 
 // app.get('/', (req, res) => {
 //   res.send('Hello World!')
@@ -61,13 +59,13 @@ const options = {
         },
         servers: [
             {
-                // url:"http://localhost:3000/",
-                url:"https://swaggerg6.azurewebsites.net/"
+                url:"http://localhost:3000/",
+                //url:"https://swaggerg6.azurewebsites.net/"
             },
         ],
     },
     //all the route.js file store inside the route file 
-    apis:["./route/*.js"],
+    apis:["./routes/*.js"],
 }
 
 const spacs = swaggerJSDoc(options);
