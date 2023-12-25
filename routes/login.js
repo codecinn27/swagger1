@@ -160,21 +160,21 @@ const loginController = require('../controllers/login');
 
 /**
  * @swagger
- * /:
+ * /login/test:
  *  get:
  *      summary: This api is for testing
  *      tags:
- *        - test
+ *        - Login
  *      description: This api is used for testing
  *      responses:
  *          200:
  *              description: to test get api
  */
 
-router.get('/',(req,res)=>{
+router.get('/test',(req,res)=>{
     res.send("Hello world!!! ")
 });
 // POST route for user login
-router.post('/login',loginController.login);
+router.post('/',loginController.login);
 
 module.exports = router;

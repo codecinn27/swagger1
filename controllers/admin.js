@@ -1,5 +1,5 @@
-const {User, Visit} = require('../model/user');
-const bcrypt = require('bcrypt');
+const User = require('../model/user');
+const Visit = require('../model/visit');
 
 module.exports.readVisitsData = async(req,res)=>{
     try {

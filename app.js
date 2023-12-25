@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 4000;
 const mongoose = require('mongoose');
 const adminRouter = require('./routes/admin');
 const loginRouter = require('./routes/login');
@@ -62,8 +62,11 @@ app.use("/g6", swaggerUi.serve, swaggerUi.setup(spacs));
 // app.get('/', (req, res) => {
 //   res.send('Hello World!')
 // })
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
 
-app.use('/', loginRouter); // Use the login route at the root
+app.use('/login', loginRouter); // Use the login route at the root
 app.use('/admin',adminRouter);
 app.use('/host', hostRouter);
 

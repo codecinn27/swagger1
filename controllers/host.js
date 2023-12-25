@@ -1,5 +1,5 @@
 // controllers/host.js
-const { User, Visitor } = require('../model/user');
+const User = require('../model/user');
 
 module.exports.getWelcomeMessage = async (req, res) => {
   try {
