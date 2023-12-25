@@ -48,7 +48,14 @@ module.exports.login = async(req, res) =>{
       
   } catch (error) {
     console.error('Error during login:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+      // Log additional information about the error
+    console.error('Error Stack:', error.stack);
+    // Handle different types of errors
+    if (error.name === 'ValidationError') {
+      return res.status(400).json({ error: 'Invalid input data' });
+    } else {
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
   }
 }
 

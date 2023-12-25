@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3030;
 const mongoose = require('mongoose');
 const adminRouter = require('./routes/admin');
 const loginRouter = require('./routes/login');
@@ -9,23 +9,17 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerJSDoc = require('swagger-jsdoc');
 
 //must be on top, before all route
-app.use(express.json());
+app.use(express.json())
 
 mongoose.connect('mongodb+srv://codecinnpro:9qLtJIAG9k8G1Pe8@cluster0.egrjwh1.mongodb.net/vms_2?retryWrites=true&w=majority')
-
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open",()=>{
-    console.log("Database connected");
+.then(()=>{
+    console.log('connected to mongodb');
+    app.listen(port, () => {
+        console.log(`Example app listening on port ${port}`)
+     })
+}).catch((error)=>{
+    console.log(error);
 })
-
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
-
-app.use('/', loginRouter); // Use the login route at the root
-app.use('/admin',adminRouter);
-app.use('/host', hostRouter);
 
 const options = {
     definition:{
@@ -57,23 +51,22 @@ const options = {
                 }
             }
         },
-        servers: [
-            {
-                url:"http://localhost:3000/"
-                // url:"https://swaggerg6.azurewebsites.net/"
-            }
-        ],
+
     },
     //all the route.js file store inside the route file 
     apis:["./routes/*.js"],
 };
-
 const spacs = swaggerJSDoc(options);
 app.use("/g6", swaggerUi.serve, swaggerUi.setup(spacs));
-// must be placed below after all route
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-});
+
+// app.get('/', (req, res) => {
+//   res.send('Hello World!')
+// })
+
+app.use('/', loginRouter); // Use the login route at the root
+app.use('/admin',adminRouter);
+app.use('/host', hostRouter);
+
 
 
 //admin create new host account

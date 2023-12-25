@@ -159,9 +159,7 @@ const hostController = require('../controllers/host');
 const middleware = require('../middleware');
 
 // Example routes
-//, hostController.getWelcomeMessage
-router.get('/:hostId', middleware.authenticateToken('host'));
-//, hostController.getVisitors
-router.get('/:hostId/visitors', middleware.authenticateToken('host'));
+router.get('/:hostId', middleware.authenticateToken('host'),hostController.getWelcomeMessage);
+router.get('/:hostId/visitors', middleware.authenticateToken('host'),hostController.getVisitors);
 
 module.exports = router;

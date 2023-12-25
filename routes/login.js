@@ -175,7 +175,6 @@ router.get('/',(req,res)=>{
     res.send("Hello world!!! ")
 });
 // POST route for user login
-//, loginController.login
-router.post('/login');
+router.post('/login',loginController.login);
 
 module.exports = router;
