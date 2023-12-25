@@ -69,7 +69,7 @@ const options = {
 };
 
 const spacs = swaggerJSDoc(options);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(spacs));
+app.use("/g6", swaggerUi.serve, swaggerUi.setup(spacs));
 // must be placed below after all route
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

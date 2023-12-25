@@ -95,7 +95,9 @@ const {User, Visit} = require('../model/user');
 const admin = require('../controllers/admin');
 const middleware = require('../middleware');
 
-router.get('/visits', middleware.authenticateToken('admin'),admin.readVisitsData);
-router.post('/registerHost', middleware.authenticateToken('admin'), admin.registerHost);
+//,admin.readVisitsData
+//, admin.registerHost
+router.get('/visits', middleware.authenticateToken('admin'));
+router.post('/registerHost', middleware.authenticateToken('admin'));
 
 module.exports = router;

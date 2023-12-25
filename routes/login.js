@@ -93,26 +93,26 @@ const router = express.Router();
 const loginController = require('../controllers/login');
 
 /**
- * @swagger
- * /login:
- *  post:
- *    tags: 
- *        - Login
- *    summary: Login for admin or host
- *    description: Once login authenticate a user and generate a JWT token
- *    requestBody:
- *      required: true
- *      content: 
- *          application/json:
- *              schema:
- *                  type: object
- *                  properties:
- *                      username:
- *                          type: string
- *                      password:
- *                          type: string
- *    responses:
- *      200:   
+* @swagger
+* /login:
+*  post:
+*    tags: 
+*        - Login
+*    summary: Login for admin or host
+*    description: Once login authenticate a user and generate a JWT token
+*    requestBody:
+*      required: true
+*      content: 
+*          application/json:
+*              schema:
+*                  type: object
+*                  properties:
+*                      username:
+*                          type: string
+*                      password:
+*                          type: string
+*    responses:
+*      200:   
 *          description: Successful login
 *          schema: 
 *              type: object    
@@ -144,7 +144,7 @@ const loginController = require('../controllers/login');
 *                      type: string
 *                      description: Error message
 *                      example: Invalid credentials
- *      500: 
+*      500: 
 *          description: Internal Server Error
 *          schema: 
 *              type: object
@@ -175,6 +175,7 @@ router.get('/',(req,res)=>{
     res.send("Hello world!!! ")
 });
 // POST route for user login
-router.post('/login', loginController.login);
+//, loginController.login
+router.post('/login');
 
 module.exports = router;
