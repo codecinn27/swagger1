@@ -3,7 +3,7 @@ const  User = require('../model/user'); // Replace with the correct path to your
 const Visitor = require('../model/visitor');
 const Visit = require('../model/visit');
 // Connect to MongoDB (make sure your MongoDB server is running)
-mongoose.connect('mongodb+srv://codecinnpro:9qLtJIAG9k8G1Pe8@cluster0.egrjwh1.mongodb.net/vms_2?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://codecinnpro:7G5lg1qQNpzglv04@cluster0.u7w8rcg.mongodb.net/vms1?retryWrites=true&w=majority')
 
 async function seedData() {
     try {
