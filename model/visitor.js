@@ -1,5 +1,4 @@
-const mongoose = require('mongoose')
-const Visit = require('./visit');
+const mongoose = require('mongoose');
 
 const visitorSchema = new mongoose.Schema({
     name: {
@@ -10,7 +9,7 @@ const visitorSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    visits: [{
+    visits_id: [{
         type:mongoose.Schema.Types.ObjectId, 
         ref:'Visit'
     }]

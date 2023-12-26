@@ -1,7 +1,7 @@
 # login route as the default route
 //log as admin
 ###
-POST http://localhost:3000/
+POST http://localhost:3000/login
 Content-Type: application/json
 
 {
@@ -23,13 +23,13 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/admin/visits
-Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTg4MzllNTVjYTYxMTNhNzE1MGRkN2MiLCJjYXRlZ29yeSI6ImFkbWluIiwiaWF0IjoxNzAzNDI3NDAwLCJleHAiOjE3MDM0MzEwMDB9.Z2jpvUgmufGV2-84SSUmp2GhvggwpSDjeh7q_Vvtnsc
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NThhNGZkNmM3ZDU4YzNiM2JmNzA4MWMiLCJjYXRlZ29yeSI6ImFkbWluIiwiaWF0IjoxNzAzNTYzMjU2LCJleHAiOjE3MDM1NjY4NTZ9.-UeLtJe_Wv-s3jq2LvjqLA10UOyellKs5ayD8sjv-oM
 Content-Type: application/json
 
 
 //login with host 1
 ###
-POST http://localhost:3000/
+POST http://localhost:3000/login
 Content-Type: application/json
 
 {

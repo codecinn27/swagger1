@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
-const Visitor = require('./visitor');
 
 const visitSchema = new mongoose.Schema({
+    visitor_id:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Visitor'
+    },
     purposeOfVisit: {
         type: String,
         required: true
@@ -9,11 +12,7 @@ const visitSchema = new mongoose.Schema({
     visitTime: {
         type: Date,
         default: Date.now
-    },
-    visitor_id:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'Visitor'
-    },
+    }
     // Add more properties for the visit as needed
     // For example: checkInTime, checkOutTime, etc.
 }, { timestamps: true });  // Add timestamps to track visit creation and update times

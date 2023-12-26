@@ -1,6 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const Visitor = require('./visitor');
 
 const userSchema = new mongoose.Schema({
     username:{
@@ -24,12 +23,12 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ['host','admin']
     },
-    visitors: {
+    visitors: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Visitor'
+    }],  // Embed an array of visitors within each host
     }
-
-})
+);
 
 // Define a pre-save hook to hash the password before saving to the database
 userSchema.pre('save', async function (next) {
